@@ -8,7 +8,7 @@ class logicaServicios:
     def __init__(self):
         self.__modelo = os.getenv('OPENAI_MODEL', 'text-davinci-003')
         self.__cliente = OpenAI()
-        self.__prompt ='tell me a who won GOTY in {year}'
+        self.__prompt ='convert {number} to binary'
 
 
     def __parametros(self, prompt):
@@ -20,5 +20,5 @@ class logicaServicios:
         ).choices[0].text)
 
     def invoke(self, number: int) ->str:
-        peticion = self.__prompt.format(year=number)
+        peticion = self.__prompt.format(number=number)
         return self.__parametros(peticion)
